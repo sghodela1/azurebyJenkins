@@ -3,11 +3,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {           
+        stage('Build') {  
+            steps{
            echo 'Building..'
+            }
         }         
-       stage('Test'){       
+       stage('Test'){  
+           steps{
           sh './az-resources/create-vm.sh'
+           }
        }
     }
 }
