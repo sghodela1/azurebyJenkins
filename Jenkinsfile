@@ -1,17 +1,13 @@
 #!groovy
-node('node'){
-    currentBuild.result = "SUCCESS"
-    try {
+pipeline {
+    agent any
 
-      stage('Checkout'){
-          checkout scm
-       }
+    stages {
+        stage('Build') {           
+           echo 'Building..'
+        }         
        stage('Test'){       
           sh './az-resources/create-vm.sh'
        }
-     }
-    catch (err) {
-        currentBuild.result = "FAILURE"
-        throw err
     }
 }
